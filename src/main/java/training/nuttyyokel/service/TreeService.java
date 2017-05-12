@@ -20,4 +20,8 @@ public class TreeService {
     public void save(Tree tree) {
         treeRepository.save(tree);
     }
+
+    public void delete(int id) {
+        treeRepository.delete(id);
+    }
 }
