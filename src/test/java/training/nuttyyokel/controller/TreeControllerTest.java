@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class TreeControllerTest {
 
-    private static final String INDEX = "/api/tree";
+    private static final String INDEX = "/api/tree/";
     private static final String GREETING_MESSAGE = "Trees";
 
     @Autowired
