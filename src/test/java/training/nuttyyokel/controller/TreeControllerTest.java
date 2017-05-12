@@ -36,13 +36,6 @@ public class TreeControllerTest {
     private TreeController treeController;
 
     @Test
-    public void testHome_returnsGreetingMessage() {
-        String response = treeController.home();
-
-        assertEquals(response, GREETING_MESSAGE);
-    }
-
-    @Test
     public void testGetAll_whenListEmpty_returnsNull() throws Exception {
         when(treeService.getAll()).thenReturn(null);
 
