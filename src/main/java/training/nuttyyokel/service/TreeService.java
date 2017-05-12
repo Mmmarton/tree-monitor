@@ -16,4 +16,8 @@ public class TreeService {
     public List<Tree> getAll() {
         return (List<Tree>) treeRepository.findAll();
     }
+
+    public void save(Tree tree) {
+        treeRepository.save(tree);
+    }
 }

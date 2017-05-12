@@ -2,35 +2,82 @@ package training.nuttyyokel.controller;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import training.nuttyyokel.model.Tree;
+import training.nuttyyokel.service.TreeService;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import java.util.Arrays;
+import java.util.List;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-@AutoConfigureMockMvc
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+@RunWith(MockitoJUnitRunner.class)
 public class TreeControllerTest {
 
-    private static final String INDEX = "/api/tree/";
     private static final String GREETING_MESSAGE = "Trees";
+    private static final String RESPONSE_SUCCESS = "success";
 
-    @Autowired
-    MockMvc mvc;
+    @Mock
+    private TreeService treeService;
+
+    @InjectMocks
+    private TreeController treeController;
 
     @Test
-    public void indexReturnsGreetingMessage() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get(INDEX).accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().string(equalTo(GREETING_MESSAGE)));
+    public void testHome_returnsGreetingMessage() {
+        String response = treeController.home();
+
+        assertEquals(response, GREETING_MESSAGE);
     }
 
+    @Test
+    public void testGetAll_whenListEmpty_returnsNull() throws Exception {
+        when(treeService.getAll()).thenReturn(null);
 
+        assertNull(treeController.getAll());
+    }
+
+    @Test
+    public void testGetAll_whenListNotEmpty_returnsTreeList() throws Exception {
+        Tree tree1 = new Tree();
+        Tree tree2 = new Tree();
+        List<Tree> list = Arrays.asList(tree1, tree2);
+        when(treeService.getAll()).thenReturn(list);
+
+        List<Tree> result = treeController.getAll();
+
+        assertNotNull(result);
+        assertEquals(list.size(), result.size());
+        assertEquals(result.get(0), list.get(0));
+        assertEquals(result.get(1), list.get(1));
+    }
+
+    @Test
+    public void testSave_whenCorrectData_returnsSuccess() throws Exception {
+        Tree tree = new Tree();
+
+        ResponseEntity<String> response = treeController.save(tree);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(RESPONSE_SUCCESS, response.getBody());
+    }
+
+    @Test
+    public void testSave_whenCorrectData_savesEntity() throws Exception {
+        Tree tree = new Tree();
+
+        treeController.save(tree);
+
+        verify(treeService, times(1)).save(any(Tree.class));
+    }
 }

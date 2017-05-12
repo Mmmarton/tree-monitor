@@ -25,7 +25,7 @@ public class Tree {
 
     @NotNull
     @Past
-    private Date date_planted;
+    private Date datePlanted;
 
     @Min(1)
     @Max(100000)
@@ -59,12 +59,12 @@ public class Tree {
         this.type = type;
     }
 
-    public Date getDate_planted() {
-        return date_planted;
+    public Date getDatePlanted() {
+        return datePlanted;
     }
 
-    public void setDate_planted(Date date_planted) {
-        this.date_planted = date_planted;
+    public void setDatePlanted(Date datePlanted) {
+        this.datePlanted = datePlanted;
     }
 
     public double getHeight() {
