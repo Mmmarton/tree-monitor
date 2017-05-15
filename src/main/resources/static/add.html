@@ -1,32 +1,18 @@
-<!DOCTYPE html>
-<html lang="en-US">
-
-<head>
-    <link rel="import" href="header.html">
-    <script type="text/javascript" src="js/addController.js"></script>
-    <title>Add tree</title>
-</head>
-
-<body ng-app="mainApp" ng-controller="addController">
-<div class="container">
-
+<div ng-app="mainApp" ng-controller="addController" class="container">
     <form>
         <fieldset>
             <label for="name">Name</label>
-            <input type="text" placeholder="name of the tree" id="name">
+            <input type="text" placeholder="name of the tree" id="name" ng-model="tree.name">
             <label for="type">Type</label>
-            <input type="text" placeholder="type of the tree" id="type">
+            <input type="text" placeholder="type of the tree" id="type" ng-model="tree.type">
             <label for="planted">Date planted</label>
-            <input type="date" placeholder="height of the tree" id="planted">
+            <input type="date" placeholder="height of the tree" id="planted" ng-model="tree.planted">
             <label for="height">Height</label>
-            <input type="number" placeholder="height of the tree" id="height">
+            <input type="number" placeholder="height of the tree" id="height" ng-model="tree.height">
             <label for="health">Health</label>
-            <input type="number" placeholder="health of the tree" id="health">
+            <input type="number" placeholder="health of the tree" id="health" ng-model="tree.health">
 
-            <input type="submit" value="Save">
+            <button ng-click="save()">Save</button>
         </fieldset>
     </form>
-
 </div>
-</body>
-</html>
