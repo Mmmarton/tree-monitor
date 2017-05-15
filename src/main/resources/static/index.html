@@ -18,16 +18,16 @@
     <table>
         <thead>
         <tr>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Date planted</th>
-            <th>Height</th>
-            <th>Health</th>
+            <th><a ng-click="orderBy('name')" href="#">Name</a></th>
+            <th><a ng-click="orderBy('type')" href="#">Type</a></th>
+            <th><a ng-click="orderBy('datePlanted')" href="#">Date planted</a></th>
+            <th><a ng-click="orderBy('height')" href="#">Height</a></th>
+            <th><a ng-click="orderBy('health')" href="#">Health</a></th>
             <th rowspan="2"/>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="tree in trees | orderBy:'datePlanted'">
+        <tr ng-repeat="tree in trees | orderBy:orderField">
             <td>{{tree.name}}</td>
             <td>{{tree.type}}</td>
             <td>{{tree.datePlanted}}</td>
