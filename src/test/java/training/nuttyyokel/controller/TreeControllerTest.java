@@ -16,16 +16,11 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-import static org.mockito.Matchers.anyInt;
-import static org.mockito.Mockito.any;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TreeControllerTest {
 
-    private static final String GREETING_MESSAGE = "Trees";
     private static final String RESPONSE_SUCCESS = "success";
     private static final int TREE_ID = 1;
 
@@ -68,15 +63,6 @@ public class TreeControllerTest {
     }
 
     @Test
-    public void testSave_whenCorrectData_callsService() throws Exception {
-        Tree tree = new Tree();
-
-        treeController.save(tree);
-
-        verify(treeService, times(1)).save(any(Tree.class));
-    }
-
-    @Test
     public void testDelete_whenCorrectId_returnsSuccess() throws Exception {
         Tree tree = new Tree();
 
@@ -84,14 +70,5 @@ public class TreeControllerTest {
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(RESPONSE_SUCCESS, response.getBody());
-    }
-
-    @Test
-    public void testDelete_whenCorrectId_callsService() throws Exception {
-        Tree tree = new Tree();
-
-        treeController.delete(TREE_ID);
-
-        verify(treeService, times(1)).delete(anyInt());
     }
 }
