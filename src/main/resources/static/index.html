@@ -6,13 +6,40 @@
     <script type="text/javascript" src="js/mainApp.js"></script>
     <script type="text/javascript" src="js/indexController.js"></script>
     <title>Tree monitor</title>
+    <link rel="stylesheet" type="text/css" href="css/milligram.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 
 <body ng-app="mainApp" ng-controller="indexController">
+<div class="container">
 
-<div ng-repeat="tree in trees">
-    <p>{{tree.name}}</p>
+    <button>Add</button>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Date planted</th>
+            <th>Height</th>
+            <th>Health</th>
+            <th rowspan="2"/>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="tree in trees | orderBy:'datePlanted'">
+            <td>{{tree.name}}</td>
+            <td>{{tree.type}}</td>
+            <td>{{tree.datePlanted}}</td>
+            <td>{{tree.height}}</td>
+            <td>{{tree.health}}</td>
+            <td>
+                <button>Edit</button>
+                <button class="button-black">Delete</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
 </body>

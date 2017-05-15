@@ -1,5 +1,7 @@
 package training.nuttyyokel.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,6 +27,7 @@ public class Tree {
 
     @NotNull
     @Past
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date datePlanted;
 
     @Min(1)
