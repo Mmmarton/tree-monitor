@@ -1,13 +1,30 @@
 mainApp.controller('indexController', function ($scope, $http, ngDialog) {
-  $http.get("/api/tree/").then(function (response) {
-    $scope.trees = response.data;
-  });
+  $scope.load = function () {
+    $http.get("/api/tree/").then(function (response) {
+      $scope.trees = response.data;
+    });
+  };
+  $scope.load();
+
   $scope.orderBy = function (field) {
     $scope.orderField = field;
   }
 
   $scope.openAddModal = function () {
-    ngDialog.open({template: 'add.html', className: 'ngdialog-theme-default'});
+    $scope.dialog = ngDialog.open({
+      template: 'add.html',
+      className: 'ngdialog-theme-default',
+      scope: $scope
+    });
+  };
+
+  $scope.openEditModal = function (id) {
+    $scope.id = id;
+    $scope.dialog = ngDialog.open({
+      template: 'edit.html',
+      className: 'ngdialog-theme-default',
+      scope: $scope
+    });
   };
 
   $scope.delete = function (id) {
@@ -15,6 +32,9 @@ mainApp.controller('indexController', function ($scope, $http, ngDialog) {
     var request = $http.delete('/api/tree/' + id);
     request.then(function (response) {
       console.log(response);
+      if (response.data.status == 200 || response.data.message == "success") {
+        $scope.load();
+      }
     });
   }
 })

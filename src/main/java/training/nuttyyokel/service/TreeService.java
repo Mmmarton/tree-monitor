@@ -10,18 +10,38 @@ import java.util.List;
 @Service
 public class TreeService {
 
-    @Autowired
-    TreeRepository treeRepository;
+  @Autowired
+  private TreeRepository treeRepository;
 
-    public List<Tree> getAll() {
-        return (List<Tree>) treeRepository.findAll();
-    }
+  public List<Tree> getAll() {
+    return (List<Tree>) treeRepository.findAll();
+  }
 
-    public void save(Tree tree) {
-        treeRepository.save(tree);
-    }
+  public Tree getTree(int id) {
+    return treeRepository.findOne(id);
+  }
 
-    public void delete(int id) {
-        treeRepository.delete(id);
-    }
+  public void save(Tree tree) {
+    treeRepository.save(tree);
+  }
+
+  public void update(Tree tree) {
+    Tree original = getTree(tree.getId());
+    treeRepository.save(merge(original, tree));
+  }
+
+  public void delete(int id) {
+    treeRepository.delete(id);
+  }
+
+  private Tree merge(Tree original, Tree modified) {
+    Tree result = new Tree();
+    result.setId(original.getId());
+    result.setName(original.getName());
+    result.setType(original.getType());
+    result.setDatePlanted(original.getDatePlanted());
+    result.setHeight(modified.getHeight());
+    result.setHealth(modified.getHealth());
+    return result;
+  }
 }
