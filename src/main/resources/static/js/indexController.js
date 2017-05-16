@@ -9,4 +9,12 @@ mainApp.controller('indexController', function ($scope, $http, ngDialog) {
   $scope.openAddModal = function () {
     ngDialog.open({template: 'add.html', className: 'ngdialog-theme-default'});
   };
+
+  $scope.delete = function (id) {
+    console.log(id);
+    var request = $http.delete('/api/tree/' + id);
+    request.then(function (response) {
+      console.log(response);
+    });
+  }
 })
