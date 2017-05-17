@@ -2,15 +2,15 @@
   <form>
     <fieldset>
       <label for="name">Name</label>
-      <input type="text" placeholder="name of the tree" id="name" ng-model="tree.name"/>
+      <input type="text" placeholder="name of the tree" id="name" ng-model="tree.name" required/>
       <label for="type">Type</label>
-      <input type="text" placeholder="type of the tree" id="type" ng-model="tree.type"/>
+      <input type="text" placeholder="type of the tree" id="type" ng-model="tree.type" required/>
       <label for="planted">Date planted</label>
-      <input type="date" placeholder="height of the tree" id="planted" ng-model="tree.datePlanted"/>
+      <input type="date" placeholder="height of the tree" id="planted" ng-model="tree.datePlanted" required max='{{date}}'/>
       <label for="height">Height</label>
-      <input type="number" placeholder="height of the tree" id="height" ng-model="tree.height"/>
+      <input type="number" placeholder="height of the tree" id="height" ng-model="tree.height" required min="1" max="100000"/>
       <label for="health">Health</label>
-      <input type="number" placeholder="health of the tree" id="health" ng-model="tree.health"/>
+      <input type="number" placeholder="health of the tree" id="health" ng-model="tree.health" required min="1" max="9"/>
 
       <button ng-click="save()">Save</button>
     </fieldset>

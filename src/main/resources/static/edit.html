@@ -3,10 +3,9 @@
     <fieldset>
       <h4>{{tree.name}}</h4>
       <label for="height">Height</label>
-      <input type="number" placeholder="height of the tree" id="height" ng-model="tree.height" required/>
-      <span ng-show="tree.height.$touched && tree.height.$invalid">The name is required.</span>
+      <input type="number" placeholder="height of the tree" id="height" ng-model="tree.height" required min="1" max="100000"/>
       <label for="health">Health</label>
-      <input type="number" placeholder="health of the tree" id="health" ng-model="tree.health"/>
+      <input type="number" placeholder="health of the tree" id="health" ng-model="tree.health" required min="1" max="100000"/>
       <button ng-click="save()">Save</button>
     </fieldset>
   </form>

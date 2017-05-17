@@ -1,4 +1,5 @@
 mainApp.controller('addController', function ($scope, $http) {
+  $scope.date = new Date();
   $scope.save = function () {
     var request = $http.post('/api/tree/', $scope.tree);
     request.then(function (response) {

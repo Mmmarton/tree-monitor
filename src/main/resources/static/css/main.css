@@ -1,3 +1,23 @@
-input.ng-invalid {
+input.ng-dirty.ng-invalid {
     background-color: #dbc1c4;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: #657f65;
+}
+
+.fancy-box {
+    background-color: #eeeeee;
+    margin-top: 50px;
+    border-radius: 1%;
+    box-shadow: 1px 1px 5px #333;
 }
