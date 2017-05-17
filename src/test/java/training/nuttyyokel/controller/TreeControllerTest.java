@@ -7,7 +7,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import training.nuttyyokel.dto.ResponseDTO;
+import training.nuttyyokel.dto.TreeDTO;
 import training.nuttyyokel.model.Tree;
 import training.nuttyyokel.service.TreeService;
 
@@ -45,7 +45,7 @@ public class TreeControllerTest {
     List<Tree> list = Arrays.asList(tree1, tree2);
     when(treeService.getAll()).thenReturn(list);
 
-    List<Tree> result = treeController.getAll();
+    List<TreeDTO> result = treeController.getAll();
 
     assertNotNull(result);
     assertEquals(list.size(), result.size());
@@ -55,21 +55,21 @@ public class TreeControllerTest {
 
   @Test
   public void testSave_whenCorrectData_returnsSuccess() throws Exception {
-    Tree tree = new Tree();
+    TreeDTO treeDTO = new TreeDTO();
 
-    ResponseDTO response = treeController.save(tree);
+    ResponseEntity<Object> response = treeController.save(treeDTO);
 
-    assertEquals(HttpStatus.OK, response.getStatus());
-    assertEquals(RESPONSE_SUCCESS, response.getMessage());
+    assertEquals(HttpStatus.OK, response.getStatusCode());
+    assertEquals(RESPONSE_SUCCESS, response.getBody());
   }
 
   @Test
   public void testDelete_whenCorrectId_returnsSuccess() throws Exception {
     Tree tree = new Tree();
 
-    ResponseDTO response = treeController.delete(TREE_ID);
+    ResponseEntity<Object> response = treeController.delete(TREE_ID);
 
-    assertEquals(HttpStatus.OK, response.getStatus());
-    assertEquals(RESPONSE_SUCCESS, response.getMessage());
+    assertEquals(HttpStatus.OK, response.getStatusCode());
+    assertEquals(RESPONSE_SUCCESS, response.getBody());
   }
 }

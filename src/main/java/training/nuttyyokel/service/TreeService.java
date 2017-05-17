@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import training.nuttyyokel.model.Tree;
 import training.nuttyyokel.repository.TreeRepository;
+import training.nuttyyokel.service.exception.InvalidTreeIdException;
 
 import java.util.List;
 
@@ -25,9 +26,13 @@ public class TreeService {
     treeRepository.save(tree);
   }
 
-  public void update(Tree tree) {
+  public void update(Tree tree) throws InvalidTreeIdException {
     Tree original = getTree(tree.getId());
-    treeRepository.save(merge(original, tree));
+    if (original != null) {
+      treeRepository.save(merge(original, tree));
+    } else {
+      throw new InvalidTreeIdException();
+    }
   }
 
   public void delete(int id) {
