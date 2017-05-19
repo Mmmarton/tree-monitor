@@ -1,4 +1,4 @@
-package training.nuttyyokel.dto;
+package training.nuttyyokel.dto.tree;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -16,7 +16,7 @@ import java.util.Date;
 /**
  * @author DrMarcell
  */
-public class TreeDTO {
+public class TreeRequestResponse {
 
   @Id
   private int id;

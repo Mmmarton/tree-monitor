@@ -1,4 +1,4 @@
-package training.nuttyyokel.dto;
+package training.nuttyyokel.dto.tree;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -6,7 +6,7 @@ import javax.validation.constraints.Min;
 /**
  * @author DrMarcell
  */
-public class TreeUpdateDTO {
+public class TreeUpdateRequest {
 
   @Min(1)
   @Max(100000)

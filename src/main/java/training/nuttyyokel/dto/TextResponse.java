@@ -6,15 +6,15 @@ import org.springframework.http.ResponseEntity;
 /**
  * @author DrMarcell
  */
-public class ResponseDTO {
+public class TextResponse {
 
   private String message;
   private HttpStatus status;
 
-  public ResponseDTO() {
+  public TextResponse() {
   }
 
-  public ResponseDTO(String message, HttpStatus status) {
+  public TextResponse(String message, HttpStatus status) {
     this.message = message;
     this.status = status;
   }

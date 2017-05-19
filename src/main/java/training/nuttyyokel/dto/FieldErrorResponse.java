@@ -5,12 +5,12 @@ import org.springframework.http.HttpStatus;
 /**
  * @author DrMarcell
  */
-public class FieldErrorDTO {
+public class FieldErrorResponse {
 
   private String defaultMessage;
   private String field;
 
-  public FieldErrorDTO() {
+  public FieldErrorResponse() {
   }
 
   public String getMessage() {
