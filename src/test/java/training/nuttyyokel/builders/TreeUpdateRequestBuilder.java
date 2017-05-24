@@ -8,22 +8,24 @@ public class TreeUpdateRequestBuilder {
   private int health;
   private int height;
 
-  public TreeUpdateRequestBuilder normalTreeUpdateRequestBuilder() {
-    health = 5;
-    height = 100;
+  public TreeUpdateRequestBuilder normalTreeUpdateRequest() {
+    health = TreeBuilder.HEALTH;
+    height = TreeBuilder.HEIGHT;
     return this;
   }
 
-  public TreeUpdateRequestBuilder emptyTreeUpdateRequestBuilder() {
+  public TreeUpdateRequestBuilder emptyTreeUpdateRequest() {
     return this;
   }
 
-  public void setHealth(int health) {
+  public TreeUpdateRequestBuilder setHealth(int health) {
     this.health = health;
+    return this;
   }
 
-  public void setHeight(int height) {
+  public TreeUpdateRequestBuilder setHeight(int height) {
     this.height = height;
+    return this;
   }
 
   public TreeUpdateRequest build() {

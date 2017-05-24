@@ -6,15 +6,16 @@ import org.springframework.http.ResponseEntity;
 /**
  * @author DrMarcell
  */
-public class TextResponse {
+public class GenericResponse {
 
   private String message;
   private HttpStatus status;
 
-  public TextResponse() {
+  public GenericResponse() {
+    status = HttpStatus.OK;
   }
 
-  public TextResponse(String message, HttpStatus status) {
+  public GenericResponse(String message, HttpStatus status) {
     this.message = message;
     this.status = status;
   }

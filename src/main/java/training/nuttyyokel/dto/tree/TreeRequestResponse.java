@@ -1,30 +1,26 @@
 package training.nuttyyokel.dto.tree;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import training.nuttyyokel.dto.GenericResponse;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.*;
 import java.util.Date;
 
 /**
  * @author DrMarcell
  */
-public class TreeRequestResponse {
+public class TreeRequestResponse extends GenericResponse {
 
   @Id
   private int id;
 
   @NotNull
+  @Size(min = 2, max = 300)
   private String name;
 
   @NotNull
+  @Size(min = 2, max = 300)
   private String type;
 
   @NotNull
