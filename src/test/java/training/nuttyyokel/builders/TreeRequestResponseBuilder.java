@@ -15,11 +15,11 @@ public class TreeRequestResponseBuilder {
   private String type;
 
   public TreeRequestResponseBuilder normalTreeRequestResponseBuilder() {
-    datePlanted = new Date();
-    health = 5;
-    height = 100;
-    name = "Peter";
-    type = "Pine";
+    datePlanted = TreeBuilder.DATE_PLANTED;
+    health = TreeBuilder.HEALTH;
+    height = TreeBuilder.HEIGHT;
+    name = TreeBuilder.NAME;
+    type = TreeBuilder.TYPE;
     return this;
   }
 
@@ -27,24 +27,29 @@ public class TreeRequestResponseBuilder {
     return this;
   }
 
-  public void setDatePlanted(Date datePlanted) {
+  public TreeRequestResponseBuilder setDatePlanted(Date datePlanted) {
     this.datePlanted = datePlanted;
+    return this;
   }
 
-  public void setHealth(int health) {
+  public TreeRequestResponseBuilder setHealth(int health) {
     this.health = health;
+    return this;
   }
 
-  public void setHeight(int height) {
+  public TreeRequestResponseBuilder setHeight(int height) {
     this.height = height;
+    return this;
   }
 
-  public void setName(String name) {
+  public TreeRequestResponseBuilder setName(String name) {
     this.name = name;
+    return this;
   }
 
-  public void setType(String type) {
+  public TreeRequestResponseBuilder setType(String type) {
     this.type = type;
+    return this;
   }
 
   public TreeRequestResponse build() {

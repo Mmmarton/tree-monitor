@@ -7,6 +7,13 @@ import java.util.Date;
 
 public class TreeBuilder {
 
+  public static final Date DATE_PLANTED = new Date();
+  public static final int HEALTH = 5;
+  public static final int HEIGHT = 100;
+  public static final int ID = 1;
+  public static final String NAME = "Peter";
+  public static final String TYPE = "Pine";
+
   private Date datePlanted;
   private int health;
   private int height;
@@ -15,12 +22,12 @@ public class TreeBuilder {
   private String type;
 
   public TreeBuilder normalTree() {
-    datePlanted = new Date();
-    health = 5;
-    height = 100;
-    id = 1;
-    name = "Peter";
-    type = "Pine";
+    datePlanted = DATE_PLANTED;
+    health = HEALTH;
+    height = HEIGHT;
+    id = ID;
+    name = NAME;
+    type = TYPE;
     return this;
   }
 
@@ -28,28 +35,34 @@ public class TreeBuilder {
     return this;
   }
 
-  public void setDatePlanted(Date datePlanted) {
+  public TreeBuilder setDatePlanted(Date datePlanted) {
     this.datePlanted = datePlanted;
+    return this;
   }
 
-  public void setHealth(int health) {
+  public TreeBuilder setHealth(int health) {
     this.health = health;
+    return this;
   }
 
-  public void setHeight(int height) {
+  public TreeBuilder setHeight(int height) {
     this.height = height;
+    return this;
   }
 
-  public void setId(int id) {
+  public TreeBuilder setId(int id) {
     this.id = id;
+    return this;
   }
 
-  public void setName(String name) {
+  public TreeBuilder setName(String name) {
     this.name = name;
+    return this;
   }
 
-  public void setType(String type) {
+  public TreeBuilder setType(String type) {
     this.type = type;
+    return this;
   }
 
   public Tree build() {

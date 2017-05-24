@@ -2,23 +2,22 @@ package training.nuttyyokel.dto;
 
 import org.springframework.http.HttpStatus;
 
-/**
- * @author DrMarcell
- */
-public class FieldErrorResponse {
+public class FieldErrorResponse extends GenericResponse {
 
-  private String defaultMessage;
   private String field;
 
   public FieldErrorResponse() {
+    setStatus(HttpStatus.BAD_REQUEST);
   }
 
-  public String getMessage() {
-    return defaultMessage;
+  public FieldErrorResponse(String defaultMessage, String field) {
+    setStatus(HttpStatus.BAD_REQUEST);
+    setMessage(defaultMessage);
+    this.field = field;
   }
 
   public void setDefaultMessage(String defaultMessage) {
-    this.defaultMessage = defaultMessage;
+    setMessage(defaultMessage);
   }
 
   public String getField() {
@@ -27,5 +26,22 @@ public class FieldErrorResponse {
 
   public void setField(String field) {
     this.field = field;
+  }
+
+  @Override
+  public boolean equals(Object other) {
+    if (other.getClass() != FieldErrorResponse.class) {
+      return false;
+    }
+    FieldErrorResponse fieldErrorResponse = (FieldErrorResponse) other;
+    if (fieldErrorResponse.getField().equals(field) && fieldErrorResponse.getMessage().equals(getMessage())) {
+      return true;
+    }
+    return false;
+  }
+
+  @Override
+  public String toString() {
+    return "[" + field + "] (" + getMessage() + ")";
   }
 }

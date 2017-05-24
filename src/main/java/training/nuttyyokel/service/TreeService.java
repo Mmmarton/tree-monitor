@@ -22,8 +22,8 @@ public class TreeService {
     return treeRepository.findOne(id);
   }
 
-  public void save(Tree tree) {
-    treeRepository.save(tree);
+  public int save(Tree tree) {
+    return treeRepository.save(tree).getId();
   }
 
   public void update(Tree tree) throws InvalidTreeIdException {
